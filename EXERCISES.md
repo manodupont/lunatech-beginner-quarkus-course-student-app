@@ -72,7 +72,7 @@ In this exercise, we will start reading products from the database, rather than 
 * In the root of the student app project, there is a `docker-compose.yml`, which contains a single service; a postgres database.
 * Start it up using: `docker-compose up --detach`
 * Next, we need to add some extensions. Add the following to your `pom.xml` in the dependencies section:
-
+```
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-orm-panache</artifactId>
@@ -81,7 +81,7 @@ In this exercise, we will start reading products from the database, rather than 
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jdbc-postgresql</artifactId>
     </dependency>
-
+```
 * Now we need to tell Quarkus where our database lives. Add the following to your `application.properties’:
 
         quarkus.datasource.db-kind=postgresql
@@ -140,12 +140,12 @@ The following three steps are only useful if you wrote the tests for these endpo
 Now, we will be adding OpenAPI support and Swagger UI to our application, so we have better visibility into our REST endpoint. 
 
 * Add the `quarkus-smallrye-openapi` extension to your application:
-    
+```
       <dependency>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-smallrye-openapi</artifactId>
       </dependency>
-
+```
 * Browse to http://localhost:8080/ and observe under _Additional endpoints_, that two new endpoints emerged: `/q/openapi` and `/q/swagger-ui/`
 * Browse to http://localhost:8080/q/swagger-ui/. You will see our four endpoints, and you can try them out in the UI. Try sending some requests to them!
 
@@ -155,12 +155,12 @@ Now, we will be adding OpenAPI support and Swagger UI to our application, so we 
 In this exercise, we will see how we can create close to no-code CRUD endpoints with the _hibernate-orm-rest-data-panache_ extension.
 
 * Add the following extension to your dependencies:
-      
+```      
       <dependency>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-hibernate-orm-rest-data-panache</artifactId>
       </dependency>
-
+```
 * Create a new *interface* `PanacheProductsResource` that extends `PanacheEntityResource<Product, Long>`
 * Browse to the Swagger UI endpoint at http://localhost:8080/q/swagger-ui/ and observe the new endpoints that Panache created.
 * Create a new product using Swagger UI, by posting the following JSON to the `POST panache-products` endpoint:
